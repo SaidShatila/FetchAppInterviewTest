@@ -1,7 +1,6 @@
-import com.example.fetchapptest.FetchApp
-import com.example.fetchapptest.network.NetworkConstans.BASE_URL
+package com.example.fetchapptest.di
+
 import com.example.fetchapptest.network.NetworkConstants.BASE_URL
-import com.example.fetchapptest.network.NetworkConstants.HIRING_URL
 import com.example.fetchapptest.network.client.ClientApi
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -34,6 +33,7 @@ object AppModule {
             .addInterceptor(logging)
             .build()
     }
+
 
     @Provides
     @Singleton
