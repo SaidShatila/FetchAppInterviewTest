@@ -1,7 +1,7 @@
 package com.example.fetchapptest.domain.fetchrepository
 
 import com.example.fetchapptest.models.FetchItem
-import com.example.fetchapptest.models.FetchItemsList
+import com.example.fetchapptest.presentation.model.FetchItemsListDTO
 import com.example.fetchapptest.network.client.ClientApi
 import com.example.fetchapptest.network.model.NetworkResult
 import kotlinx.coroutines.Dispatchers
@@ -13,15 +13,10 @@ import javax.inject.Inject
 class FetchRepository @Inject constructor(
     private val clientApiImplementation: ClientApi
 ) {
-    suspend fun fetchHiringData(): Flow<NetworkResult<FetchItemsList>> = flow {
-        // Call the API method directly, which now returns List<FetchItem>
+    fun fetchHiringData(): Flow<NetworkResult<FetchItemsListDTO>> = flow {
         val items: List<FetchItem> = clientApiImplementation.fetchHiringEndpoint()
-        // Wrap the list into your FetchItemsList model
-        emit(NetworkResult.Success(FetchItemsList(fetchItems = items, isSkeleton = false)))
+        emit(NetworkResult.Success(FetchItemsListDTO(fetchItems = items, isLoading = false)))
     }.flowOn(Dispatchers.IO)
 }
-
-
-//    suspend fun paginateFetchData()
 
 
