@@ -1,6 +1,7 @@
+package com.example.fetchapptest.network
+
 import com.example.fetchapptest.network.model.BaseResponse
 import com.example.fetchapptest.network.model.NetworkResult
-
 
 abstract class BaseApiResponse {
     suspend fun <T> safeApiCall(apiCall: suspend () -> BaseResponse<T>): NetworkResult<T> {
