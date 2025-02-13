@@ -18,6 +18,8 @@ ksp = "2.1.0-1.0.29"
 graphicsShape = "1.0.1"
 material = "1.12.0"
 appCompat = "1.7.0"
+paging = "3.1.1"
+pagingCompose = "1.0.0-alpha14"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -61,6 +63,10 @@ androidx-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navig
 
 # Graphics Shape
 androidx-ui-graphics-shape = { group = "androidx.graphics", name = "graphics-shapes", version.ref = "graphicsShape" }
+
+#Paging
+paging-runtime  = { module = "androidx.paging:paging-runtime", version.ref = "paging" }
+paging-compose  = { module = "androidx.paging:paging-compose", version.ref = "pagingCompose" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
