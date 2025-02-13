@@ -80,4 +80,8 @@ dependencies {
     //AppCompat
     implementation(libs.androidx.ui.appcompat)
     implementation(libs.androidx.ui.appcompat.resources)
+
+    //Paging
+    implementation(libs.paging.runtime)
+    implementation(libs.paging.compose)
 }

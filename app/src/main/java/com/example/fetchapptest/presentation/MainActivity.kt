@@ -1,4 +1,4 @@
-package com.example.fetchapptest
+package com.example.fetchapptest.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
