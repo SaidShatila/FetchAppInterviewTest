@@ -1,19 +1,13 @@
 package com.example.fetchapptest.presentation.model
 
-import androidx.paging.PagingData
 import com.example.fetchapptest.models.FetchItem
-import kotlin.random.Random
 
-sealed class FetchItemList(val type: FetchOrderListType, val id: Int) {
-    enum class FetchOrderListType {
-        FETCHITEMS,
-        SKELETON
-    }
+sealed interface FetchUiState {
 
-    data class FetchItemsHolder(val fetchItems: PagingData<FetchItem>) :
-        FetchItemList(FetchOrderListType.FETCHITEMS, Random.nextInt())
+    data class LoadingHolder(val isLoading: Boolean) :
+        FetchUiState
 
-    data class SkeletonHolder(val dummy: Boolean = true) :
-        FetchItemList(FetchOrderListType.SKELETON, kotlin.random.Random.nextInt())
-
+    data class ErrorHolder(val msg: String) : FetchUiState
+    data class SuccessHolder(val list: List<FetchItem>) :
+        FetchUiState
 }

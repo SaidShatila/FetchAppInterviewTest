@@ -34,7 +34,6 @@ object AppModule {
             .build()
     }
 
-
     @Provides
     @Singleton
     fun provideRetrofitBuilder(
