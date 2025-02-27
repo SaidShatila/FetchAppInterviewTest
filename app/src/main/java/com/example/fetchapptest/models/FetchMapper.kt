@@ -10,3 +10,12 @@ fun FetchItemsListDTO.filterGroupSortItems(): List<FetchItem> {
         .values
         .flatMap { group -> group.sortedWith(compareBy({ it.fetchId }, { it.fetchName })) }
 }
+
+
+//fun FetchItemsListDTO.filterGroupSortItems(): List<FetchItem> {
+//    return fetchItems
+//        .filter { !it.fetchName.isNullOrBlank() }
+//        .sortedWith(
+//            compareBy({ it.fetchListId }, { it.fetchId }, { it.fetchName })
+//        )
+//}

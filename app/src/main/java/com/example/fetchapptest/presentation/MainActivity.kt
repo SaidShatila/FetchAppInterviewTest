@@ -1,6 +1,5 @@
 package com.example.fetchapptest.presentation
 
-import android.R
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
@@ -16,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.content.ContextCompat
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.fetchapptest.R
 import com.example.fetchapptest.presentation.model.FetchUiState
 import com.example.fetchapptest.presentation.ui.ErrorUi
 import com.example.fetchapptest.presentation.ui.FetchItemsListContent

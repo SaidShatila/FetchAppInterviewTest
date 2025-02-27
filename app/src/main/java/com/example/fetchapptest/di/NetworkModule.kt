@@ -13,6 +13,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
@@ -31,22 +32,25 @@ object AppModule {
 
         return OkHttpClient.Builder()
             .addInterceptor(logging)
+            .connectTimeout(30, TimeUnit.SECONDS)
+            .readTimeout(30, TimeUnit.SECONDS)
+            .writeTimeout(30, TimeUnit.SECONDS)
             .build()
     }
 
     @Provides
     @Singleton
-    fun provideRetrofitBuilder(
+    fun provideRetrofit(
         gson: Gson,
-        okHttpClient: OkHttpClient
-    ): Retrofit {
-        return Retrofit.Builder()
-            .addConverterFactory(GsonConverterFactory.create(gson))
-            .addConverterFactory(ScalarsConverterFactory.create())
-            .client(okHttpClient)
-            .baseUrl(BASE_URL)
-            .build()
-    }
+        okHttpClient: OkHttpClient,
+        baseUrl: String
+    ): Retrofit = Retrofit.Builder()
+        .addConverterFactory(GsonConverterFactory.create(gson))
+        .addConverterFactory(ScalarsConverterFactory.create())
+        .client(okHttpClient)
+        .baseUrl(baseUrl)
+        .build()
+
 
     @Provides
     @Singleton
@@ -56,6 +60,9 @@ object AppModule {
     @Provides
     @Singleton
     fun provideGson(): Gson {
-        return GsonBuilder().create()
+        return GsonBuilder()
+            .serializeNulls()
+            .setLenient()
+            .create()
     }
 }
